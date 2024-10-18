@@ -37,6 +37,9 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+app.get("/",(req,res)=>{
+    res.json({working:true})
+})
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
