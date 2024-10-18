@@ -12,7 +12,7 @@ dotenv.config()
 app.post('/send-email', async (req, res) => {
     console.log(process.env.mailuser);
     
-  const { name, email, subject, message } = req.body;
+  const { name, email, subject, message, mailTo } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -24,7 +24,7 @@ app.post('/send-email', async (req, res) => {
 
   const mailOptions = {
     from: email, 
-    to: 'Sales@vibecreationsmedia.com', 
+    to: mailTo, 
     subject: subject || 'No Subject', 
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
